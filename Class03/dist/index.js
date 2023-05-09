@@ -77,4 +77,50 @@ class Car {
 }
 const car1 = new Car("BMW", "ix", 1735000);
 console.log(car1);
+// koi aisi value jo class ko initialize karte waqt oosko nahi milegi but object mai hogi 
+// jise ham baad mai object mai add karwa sakengy... e.g skills
+class Employe {
+    constructor(name, post, id) {
+        this.name = name;
+        this.post = post;
+        this.id = id;
+        this.skills = [];
+    }
+}
+const employ1 = new Employe("Ruhama", "worker", 1);
+const employ2 = new Employe("Gull", "worker", 2);
+//console.log(employ1);//Here we have not added the skill but it is still present in the employ2 object.
+employ1.skills.push("team management");
+console.log(employ1); //skills add successfuly
+employ1.skills.length = 0; // Or 
+employ1.skills = [];
+/*If we write any of the above 2 lines then the skill array values ​​will be reassigned
+ and it will be empty which is not true .So we can use the private access modifier
+ with the skill array so that no one can access it from outside the class.*/
+//  class Teacher {
+//     private skills: string[] = [];
+//     constructor(public name: string, public subject: string, private id: number){
+//     }
+// }
+// const teacher1 = new Teacher("Fahad", "IT", 1);
+//teacher1.skills.push("JavaScript"); 
+/* It gives error because the skill is private the problem now is how we can
+update the skill .So for that we can use getter and setter or create methods for it.
+For now we are going to create the method.  */
+/*In TypeScript, you can use the readonly modifier to define read-only properties
+ on an object. Once a property is marked as readonly, its value cannot be changed.*/
+class Teacher {
+    constructor(name, subject, id) {
+        this.name = name;
+        this.subject = subject;
+        this.id = id;
+        this.skills = [];
+    }
+    addSkill(skill) {
+        this.skills.push(skill); //This method will help to add/update skills. 
+    }
+}
+const teacher1 = new Teacher("Fahad", "IT", 1);
+teacher1.addSkill("JavaScript");
+console.log(teacher1);
 //# sourceMappingURL=index.js.map
