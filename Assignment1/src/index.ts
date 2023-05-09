@@ -44,7 +44,7 @@ body.appendChild(table);
 //styling
 
 table.style.width = '98vw';
-table.style.border = "2px solid grey"
+table.style.border = "2px solid grey";
 thead.style.backgroundColor = 'black';
 thead.style.color = 'white';
 thead.style.padding = '2px';
