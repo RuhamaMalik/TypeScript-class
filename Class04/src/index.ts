@@ -126,3 +126,81 @@ class ElectricProduct extends Product {
 
 const blander = new ElectricProduct(1, "juicer blander", 1500, "sony", "2023L");
 console.log(blander);
+
+
+// abstract methods
+/*
+In TypeScript, an abstract method is a method declaration in a class that doesn't
+ have an implementation. Abstract methods are meant to be overridden
+  (implemented) in derived classes.
+
+To define an abstract method in TypeScript, you need to mark it with the abstract
+ keyword and omit the method body.
+
+ Abstract methods are useful when you want to define a common method signature
+  in a base class but leave the implementation details to the derived classes. 
+  This allows you to enforce that derived classes provide their own implementation
+   for the abstract methods, ensuring that each derived class adheres to the
+    required behavior defined by the base class.
+
+    abstract methods wo methods hen jinhy jo baSE class ko extend karega ooske
+     pass hona chahiye. iske liye base class ko bhi abstract hona la5mi he
+*/
+
+abstract class Animal {
+    constructor(
+        private _name: string,
+    ) { }
+    get name() {
+        return this._name;
+    }
+    set name(newName: string) {
+        if (!newName) {
+            throw Error("Name can not be empty !");
+        }
+        this._name = newName;
+    } 
+    abstract makeSound(): void;
+}
+
+
+class Dog extends Animal {
+    makeSound(): void {
+      console.log("Woof!");
+    }
+  }
+  
+  class Cat extends Animal {
+    makeSound(): void {
+      console.log("Meow!");
+    }
+  }
+  
+  const dog = new Dog("Woofy");
+  dog.makeSound(); // Output: Woof!
+  
+  const cat = new Cat("kitten");
+  cat.makeSound(); // Output: Meow!
+
+  // Singleton
+  /*
+  The Singleton pattern is a design pattern used in software development to 
+  ensure that a class has only one instance and provides a global point of access
+   to it.
+
+In TypeScript, you can implement the Singleton pattern by using a combination of
+ a private constructor, a static instance variable, and a static method for
+  accessing the instance.
+
+  -- koi class jiska aik hi instance bany multiple instance na bany -
+  */
+
+
+class Util {
+    constructor(){
+
+    }
+}
+
+let utl1 = new Util();
+let utl2 = new Util(); // ab yahan par iske 2 instance ban gae hen ham aisa nahi chahty tw iske liye ham singleton pattern ko use karengy 
