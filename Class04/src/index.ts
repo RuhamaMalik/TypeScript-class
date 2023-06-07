@@ -99,7 +99,7 @@ class ClothProduct extends Product {
         name: string,
         price: number,
         // private _size: string,
-        private _size: "S" | "M" |"L" | "XL",
+        private _size: "S" | "M" | "L" | "XL",
         private _color: string,
     ) {
         super(id, name, price) // super() used to call the base class constructor 
@@ -120,7 +120,7 @@ class ElectricProduct extends Product {
         price: number,
         private _brand: string,
         private _module: string,
-    ){super(id, name, price)}
+    ) { super(id, name, price) }
 
 }
 
@@ -159,48 +159,64 @@ abstract class Animal {
             throw Error("Name can not be empty !");
         }
         this._name = newName;
-    } 
+    }
     abstract makeSound(): void;
 }
 
 
 class Dog extends Animal {
     makeSound(): void {
-      console.log("Woof!");
-    }
-  }
-  
-  class Cat extends Animal {
-    makeSound(): void {
-      console.log("Meow!");
-    }
-  }
-  
-  const dog = new Dog("Woofy");
-  dog.makeSound(); // Output: Woof!
-  
-  const cat = new Cat("kitten");
-  cat.makeSound(); // Output: Meow!
-
-  // Singleton
-  /*
-  The Singleton pattern is a design pattern used in software development to 
-  ensure that a class has only one instance and provides a global point of access
-   to it.
-
-In TypeScript, you can implement the Singleton pattern by using a combination of
- a private constructor, a static instance variable, and a static method for
-  accessing the instance.
-
-  -- koi class jiska aik hi instance bany multiple instance na bany -
-  */
-
-
-class Util {
-    constructor(){
-
+        console.log("Woof!");
     }
 }
 
-let utl1 = new Util();
-let utl2 = new Util(); // ab yahan par iske 2 instance ban gae hen ham aisa nahi chahty tw iske liye ham singleton pattern ko use karengy 
+class Cat extends Animal {
+    makeSound(): void {
+        console.log("Meow!");
+    }
+}
+
+const dog = new Dog("Woofy");
+dog.makeSound(); // Output: Woof!
+
+const cat = new Cat("kitten");
+cat.makeSound(); // Output: Meow!
+
+// Singleton
+/*
+The Singleton pattern is a design pattern used in software development to 
+ensure that a class has only one instance and provides a global point of access
+ to it.
+
+In TypeScript, you can implement the Singleton pattern by using a combination of
+a private constructor, a static instance variable, and a static method for
+accessing the instance.
+
+-- koi class jiska aik hi instance bany multiple instance na bany -
+*/
+
+
+// class Util {
+//     constructor(){
+
+//     }
+// }
+
+// let utl1 = new Util();
+// let utl2 = new Util(); // ab yahan par iske 2 instance ban gae hen ham aisa nahi chahty tw iske liye ham constructor ko private kardengy ab ham iske saath new nahi laga sakty. 
+
+class Util {
+    private static instance: Util;
+
+    private constructor() { }
+
+    static getInstance() {
+        if (!this.instance) {
+            this.instance = new Util();
+        }
+        return this.instance;
+    }
+}
+
+let utl1 = Util.getInstance();
+let utl2 = Util.getInstance();

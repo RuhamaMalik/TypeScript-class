@@ -154,10 +154,21 @@ accessing the instance.
 
 -- koi class jiska aik hi instance bany multiple instance na bany -
 */
+// class Util {
+//     constructor(){
+//     }
+// }
+// let utl1 = new Util();
+// let utl2 = new Util(); // ab yahan par iske 2 instance ban gae hen ham aisa nahi chahty tw iske liye ham constructor ko private kardengy ab ham iske saath new nahi laga sakty. 
 class Util {
-    constructor() {
+    constructor() { }
+    static getInstance() {
+        if (!this.instance) {
+            this.instance = new Util();
+        }
+        return this.instance;
     }
 }
-let utl1 = new Util();
-let utl2 = new Util(); // ab yahan par iske 2 instance ban gae hen ham aisa nahi chahty tw iske liye ham singleton pattern ko use karengy 
+let utl1 = Util.getInstance();
+let utl2 = Util.getInstance();
 //# sourceMappingURL=index.js.map
