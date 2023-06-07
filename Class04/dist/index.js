@@ -171,4 +171,5 @@ class Util {
 }
 let utl1 = Util.getInstance();
 let utl2 = Util.getInstance();
+console.log(utl1);
 //# sourceMappingURL=index.js.map
